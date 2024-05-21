@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\SocialMedia;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -23,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'no_telp',
         'email',
         'password',
-        'remember_token', 
+        'remember_token',
         'email_verified_at'
     ];
 
@@ -46,4 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function social_media()
+    {
+        return $this->hasMany(SocialMedia::class, 'user_id', 'id');
+    }
 }
