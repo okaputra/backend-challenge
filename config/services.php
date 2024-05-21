@@ -38,4 +38,10 @@ return [
         'redirect' => 'http://127.0.0.1:8000/oauth/google/callback',
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => 'http://localhost:8000/oauth/facebook/callback',
+    ],
+
 ];
