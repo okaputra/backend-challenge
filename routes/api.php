@@ -24,5 +24,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/oauth/{social_media}', [SocialAuthController::class, 'redirect']);
 Route::get('/oauth/{social_media}/callback', [SocialAuthController::class, 'callback']);
 
+// Dashboard
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware(['auth:sanctum', 'verified']);
 

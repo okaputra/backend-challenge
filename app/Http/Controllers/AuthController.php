@@ -26,6 +26,7 @@ class AuthController extends Controller
             return response()->json(['errors' => $validatedData->errors()], 422);
         }
 
+        // Create new user
         $user = User::create([
             'nama' => $request->nama,
             'email' => $request->email,
@@ -35,15 +36,18 @@ class AuthController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
+        // sending email verification to user email
         $user->sendEmailVerificationNotification();
 
         return response()->json(['message' => 'Registration successfully. Please verify your email.'], 201);
     }
 
+    // Method to verify email
     public function verifyEmail(Request $request)
     {
         $user = User::where('remember_token', $request->code)->firstOrFail();
 
+        // check if email is already
         if ($user->hasVerifiedEmail()) {
             return response()->json(['message' => 'Email already verified.'], 200);
         }

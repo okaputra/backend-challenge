@@ -13,6 +13,7 @@ class SocialAuthController extends Controller
     // Method to redirect user
     public function redirect($social_media)
     {
+        // Validate social media from parameter sent
         $validated = $this->validateSosmed($social_media);
         if (!is_null($validated)) {
             return $validated;
@@ -51,9 +52,8 @@ class SocialAuthController extends Controller
                 'avatar' => $user->getAvatar()
             ]
         );
+        // Create new token and return to response
         $token = $userCreated->createToken('token-name')->plainTextToken;
-
-        // return response()->json($userCreated, 200, ['Access-Token' => $token]);
         return response()->json([
             'message' => 'Login success',
             'user' => $userCreated,
@@ -61,6 +61,7 @@ class SocialAuthController extends Controller
         ], 200);
     }
 
+    // Validate social media
     protected function validateSosmed($social_media)
     {
         if (!in_array($social_media, ['facebook', 'google'])) {
