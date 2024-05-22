@@ -20,7 +20,12 @@ class TransaksiController extends Controller
     public function userTransaksi($user)
     {
         // get list transaksi of specific user
-        $transactions = transaksi::where('user_id', $user)->get();
+        $transactions = transaksi::where('user_id', $user)->first();
+        if (!$transactions) {
+            return response()->json([
+                'message' => 'Not Found'
+            ], 404);
+        }
         return response()->json([
             'message' => 'Data Fetch Successfully',
             'transaksi' => $transactions
