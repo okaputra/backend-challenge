@@ -2,7 +2,7 @@
 
 ## Step 1: Clone the GitHub Repository
 
-git clone <https://github.com/okaputra/backend-challenge.git>
+    git clone <https://github.com/okaputra/backend-challenge.git>
 
 ## Step 2: Install Composer Dependencies / Update if necessary
 
