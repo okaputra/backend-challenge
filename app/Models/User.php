@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\SocialMedia;
+use App\Models\transaksi;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -51,5 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function social_media()
     {
         return $this->hasMany(SocialMedia::class, 'user_id', 'id');
+    }
+    public function transaksi()
+    {
+        return $this->hasMany(transaksi::class, 'user_id', 'id');
     }
 }

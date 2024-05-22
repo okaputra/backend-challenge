@@ -15,21 +15,23 @@ class UserSeeder extends Seeder
     {
         // seeder for role user
         User::create([
-            'nama'=>'user1',
-            'alamat'=>'bali',
-            'no_telp'=>'081890987765',
-            'role'=>'user',
-            'email'=>'user1@gmail.com',
+            'nama' => 'user1',
+            'alamat' => 'bali',
+            'no_telp' => '081890987765',
+            'role' => 'user',
+            'email_verified_at' => now(),
+            'email' => 'user1@gmail.com',
             'password' => bcrypt('user1'),
         ]);
 
         // seeder for role admin
         User::create([
-            'nama'=>'admin1',
-            'alamat'=>'bali',
-            'no_telp'=>'081890987765',
-            'role'=>'admin',
-            'email'=>'admin1@gmail.com',
+            'nama' => 'admin1',
+            'alamat' => 'bali',
+            'no_telp' => '081890987765',
+            'role' => 'admin',
+            'email_verified_at' => now(),
+            'email' => 'admin1@gmail.com',
             'password' => bcrypt('admin1'),
         ]);
     }

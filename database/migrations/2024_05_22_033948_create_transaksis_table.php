@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tb_produks', function (Blueprint $table) {
+        Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_produk');
-            $table->string('deskripsi');
-            $table->string('harga');
-            $table->string('diskon')->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->decimal('amount', 10, 2);
+            $table->string('description');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_produks');
+        Schema::dropIfExists('transaksis');
     }
 };
